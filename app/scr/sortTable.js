@@ -1,5 +1,5 @@
 
-function mySorTable(position,isAsc) {
+function mySorTable2(position,isAsc) {
     if (isAsc == null) {
         //默认降序
         isAsc = false;
@@ -22,6 +22,7 @@ function mySorTable(position,isAsc) {
     var n;
     for(i = 0; i < rows.length; i ++){
         row1 = rows[i];
+        //跳过其他标签，比如th
         if(row1.getElementsByTagName("td") == null ||
             row1.getElementsByTagName("td").length < 1){
             continue;
@@ -29,8 +30,15 @@ function mySorTable(position,isAsc) {
         index = i;
         for(j = i+1; j < rows.length ; j++) {
             row2 = rows[j];
-            var col1 = row1.getElementsByTagName("td")[position].innerHTML;
-            var col2 = row2.getElementsByTagName("td")[position].innerHTML;
+            //如果td里面是a标签，需要再读一层
+            var col1 = row1.getElementsByTagName("td")[position];
+            if (col1.getElementsByTagName("a").length > 0) {
+                col1 = col1.getElementsByTagName("a")[0].innerHTML;
+            }
+            var col2 = row2.getElementsByTagName("td")[position];
+            if (col2.getElementsByTagName("a").length > 0) {
+                col2 = col2.getElementsByTagName("a")[0].innerHTML;
+            }
             if (isAsc) {
                 if(col1 > col2) {
                     index = j;
@@ -56,4 +64,4 @@ function mySorTable(position,isAsc) {
         }
     }
 }
-//mySorTable(2)
+//mySorTable2(0);
