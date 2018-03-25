@@ -1,4 +1,4 @@
 # WebviewTableSortColumn
 sort table tag at column
-### Simple
+### Sample
 mySorTable(2)
