@@ -1,5 +1,4 @@
-
-function mySorTable2(position,isAsc) {
+function mySorTable(position,isAsc) {
     if (isAsc == null) {
         //默认降序
         isAsc = false;
@@ -34,10 +33,14 @@ function mySorTable2(position,isAsc) {
             var col1 = row1.getElementsByTagName("td")[position];
             if (col1.getElementsByTagName("a").length > 0) {
                 col1 = col1.getElementsByTagName("a")[0].innerHTML;
+            }else {
+                col1 = col1.innerHTML;
             }
             var col2 = row2.getElementsByTagName("td")[position];
             if (col2.getElementsByTagName("a").length > 0) {
                 col2 = col2.getElementsByTagName("a")[0].innerHTML;
+            }else {
+                col2 = col2.innerHTML;
             }
             if (isAsc) {
                 if(col1 > col2) {
@@ -64,4 +67,4 @@ function mySorTable2(position,isAsc) {
         }
     }
 }
-//mySorTable2(0);
+mySorTable(2);
